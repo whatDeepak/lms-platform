@@ -11,6 +11,7 @@ import { CategoryForm } from "./_components/category-form";
 import { PriceForm } from "./_components/price-form";
 import { AttachmentForm } from "./_components/attachment-form";
 import { ChaptersForm } from "./_components/chapters-form";
+import { Banner } from "@/components/banner";
 
 const CourseIdPage = async ({
     params
@@ -70,6 +71,12 @@ const CourseIdPage = async ({
   const isComplete = requiredFields.every(Boolean);
 
   return ( 
+    <>
+      {!course.isPublished && (
+        <Banner
+          label="This course is unpublished. It will not be visible to the students."
+        />
+      )}
     <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
@@ -155,6 +162,7 @@ const CourseIdPage = async ({
           </div>
         </div>
       </div>
+    </>
   );
 }
    
